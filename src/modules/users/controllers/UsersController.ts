@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import CreateUserService from "../services/CreateUserService";
+import DeleteUserService from "../services/DeleteUserService";
 import ListUserService from "../services/ListUsersService";
 
 export default class UsersController {
@@ -14,5 +15,12 @@ export default class UsersController {
     const createUser = new CreateUserService();
     const user = await createUser.execute({ name, email, password });
     return response.json(user);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const deleteUser = new DeleteUserService();
+    await deleteUser.execute({ id });
+    return response.json([]);
   }
 }

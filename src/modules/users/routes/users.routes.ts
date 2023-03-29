@@ -32,5 +32,11 @@ usersRouter.patch(
   usersAvatarController.update
 );
 
+usersRouter.delete(
+  "/:id",
+  celebrate({ [Segments.PARAMS]: { id: Joi.string().uuid().required() } }),
+  usersController.delete
+);
+
 export default usersRouter;
 //importar no shared/http/index.ts
