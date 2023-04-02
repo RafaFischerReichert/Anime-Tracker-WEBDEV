@@ -1,4 +1,5 @@
 import animeRouter from "@modules/anime/routes/anime.routes";
+import charactersRouter from "@modules/characters/routes/characters.routes";
 import passwordRouter from "@modules/users/routes/password.routes";
 import profileRouter from "@modules/users/routes/profile.routes";
 import sessionsRouter from "@modules/users/routes/session.routes";
@@ -14,5 +15,6 @@ routes.use("/sessions", sessionsRouter);
 routes.use("/password", passwordRouter);
 routes.use("/profile", profileRouter);
 routes.use("/actors", actorsRouter);
+routes.use("/characters", charactersRouter);
 
 export default routes;

@@ -1,7 +1,9 @@
+import AnimeCharacters from "@modules/characters/typeorm/entities/AnimeCharacters";
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
@@ -10,6 +12,11 @@ import {
 export default class Anime {
   @PrimaryGeneratedColumn("uuid")
   id: string;
+  @OneToMany(
+    () => AnimeCharacters,
+    (anime_characters) => anime_characters.anime
+  )
+  anime_characters: AnimeCharacters;
   @Column()
   title: string;
   @Column()
