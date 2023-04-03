@@ -35,7 +35,7 @@ actorsRouter.put(
       name: Joi.string().required(),
       website: Joi.string().required(),
     },
-    [Segments.PARAMS]: { ID: Joi.string().uuid().required() },
+    [Segments.PARAMS]: { id: Joi.string().uuid().required() },
   }),
   actorsController.update
 );
