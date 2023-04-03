@@ -17,7 +17,7 @@ interface IRequest {
 export default class CharacterRepository extends Repository<Character> {
   public async findById(id: string): Promise<Character | undefined> {
     const character = this.findOne(id, {
-      relations: ["anime_characters", "voice_actor"],
+      relations: ["anime_characters", "voiceActor"],
     });
     return character;
   }

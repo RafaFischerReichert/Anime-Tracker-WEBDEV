@@ -9,7 +9,7 @@ const charsController = new CharactersController();
 
 charactersRouter.use(isAuthenticated);
 charactersRouter.get(
-  ":/id",
+  "/:id",
   celebrate({ [Segments.PARAMS]: { id: Joi.string().uuid().required() } }),
   charsController.show
 );
