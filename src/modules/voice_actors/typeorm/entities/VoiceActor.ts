@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 
-@Entity("customers")
+@Entity("voice_actors")
 export default class VoiceActor {
   @PrimaryGeneratedColumn("uuid")
   id: string;
