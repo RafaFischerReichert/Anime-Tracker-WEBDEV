@@ -13,9 +13,9 @@ export default class CharactersController {
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
-    const { actor_id, anime } = request.body;
+    const { name, actor_id, anime } = request.body;
     const createCharacter = new CreateCharacterService();
-    const character = await createCharacter.execute({ actor_id, anime });
+    const character = await createCharacter.execute({ name, actor_id, anime });
     return response.json(character);
   }
 }

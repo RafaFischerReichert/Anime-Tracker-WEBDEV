@@ -10,12 +10,13 @@ interface IAnime {
   isMainCharacter: boolean;
 }
 interface IRequest {
+  name: string;
   actor_id: string;
   anime: IAnime[];
 }
 
 export default class CreateCharacterService {
-  public async execute({ actor_id, anime }: IRequest): Promise<Character> {
+  public async execute({ name, actor_id, anime }: IRequest): Promise<Character> {
     const characterRepository = getCustomRepository(CharacterRepository);
     const animeRepository = getCustomRepository(AnimeRepository);
     const actorsRepository = getCustomRepository(VoiceActorRepository);
@@ -46,6 +47,7 @@ export default class CreateCharacterService {
     }));
 
     const character = await characterRepository.createCharacter({
+      name: name,
       voiceActor: actorExists,
       anime: serializerAnime,
     });

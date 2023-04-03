@@ -1,5 +1,5 @@
 import VoiceActor from "@modules/voice_actors/typeorm/entities/VoiceActor";
-import { Repository } from "typeorm";
+import { EntityRepository, Repository } from "typeorm";
 import Character from "../typeorm/entities/Character";
 
 interface IAnime {
@@ -8,10 +8,12 @@ interface IAnime {
 }
 
 interface IRequest {
+  name: string;
   voiceActor: VoiceActor;
   anime: IAnime[];
 }
 
+@EntityRepository(Character)
 export default class CharacterRepository extends Repository<Character> {
   public async findById(id: string): Promise<Character | undefined> {
     const character = this.findOne(id, {
@@ -21,10 +23,11 @@ export default class CharacterRepository extends Repository<Character> {
   }
 
   public async createCharacter({
+    name,
     voiceActor,
     anime,
   }: IRequest): Promise<Character> {
-    const character = this.create({ voiceActor, anime_characters: anime });
+    const character = this.create({ name, voiceActor, anime_characters: anime });
     await this.save(character);
     return character;
   }

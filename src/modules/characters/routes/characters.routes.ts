@@ -18,6 +18,7 @@ charactersRouter.post(
   "/",
   celebrate({
     [Segments.BODY]: {
+      name: Joi.string().required(),
       actor_id: Joi.string().required(),
       anime: Joi.required(),
     },
